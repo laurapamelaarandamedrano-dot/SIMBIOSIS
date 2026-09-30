@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/base';
+---
+
+<BaseLayout title="Página no encontrada" description="La página que buscas no existe o fue movida.">
+  <section class="section not-found text-center">
+    <div class="container">
+      <p class="eyebrow">Error 404</p>
+      <h1>No encontramos esta página</h1>
+      <p class="lede lede--centered">
+        La dirección a la que intentaste acceder no existe o fue movida. Puedes regresar al
+        inicio o explorar las secciones principales del sitio.
+      </p>
+      <div class="cluster cluster--center">
+        <a class="button button--primary" href={withBase('/')}>Volver al inicio</a>
+        <a class="button button--ghost-light" href={withBase('/que-hacemos/')}>Qué hacemos</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+  }
+</style>

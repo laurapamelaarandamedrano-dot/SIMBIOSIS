@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero3D from '../components/Hero3D.astro';
+import Card from '../components/Card.astro';
+import { pilares, quienesSomosTeaser, org } from '../data/content';
+import { withBase } from '../utils/base';
+---
+
+<BaseLayout
+  title="Inicio"
+  description="SIMBIOSIS es una organización de la sociedad civil que fortalece instituciones públicas y participación ciudadana en México."
+>
+  <Hero3D />
+
+  <section class="section" aria-labelledby="pilares-titulo">
+    <div class="container">
+      <p class="eyebrow">Qué hacemos</p>
+      <h2 id="pilares-titulo">Cuatro formas de actuar</h2>
+      <div class="grid grid--4 reveal-stagger">
+        {pilares.map((p) => (
+          <Card titulo={p.titulo} texto={p.texto} indice={p.letra} color={p.color} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--band" aria-labelledby="quienes-titulo">
+    <div class="container">
+      <p class="eyebrow">Quiénes somos</p>
+      <h2 id="quienes-titulo" class="reveal">SIMBIOSIS</h2>
+      <p class="lede reveal">{quienesSomosTeaser.parrafo1}</p>
+      <p class="lede reveal">{quienesSomosTeaser.parrafo2}</p>
+      <blockquote class="pull-quote reveal">
+        <p>{quienesSomosTeaser.cita}</p>
+      </blockquote>
+      <a class="button button--primary" href={withBase('/quienes-somos/')}>Conoce SIMBIOSIS</a>
+    </div>
+  </section>
+
+  <section class="section section--tight text-center" aria-labelledby="cta-titulo">
+    <div class="container">
+      <h2 id="cta-titulo">{org.eslogan}</h2>
+      <p class="lede lede--centered">
+        Acompañamos a instituciones públicas, gobiernos locales, organizaciones y liderazgos
+        comunitarios para convertir decisiones públicas en resultados que la gente pueda ver y
+        sentir en su vida diaria.
+      </p>
+      <div class="cluster cluster--center">
+        <a class="button button--primary" href={withBase('/estrategia/')}>Nuestra estrategia</a>
+        <a class="button button--ghost button--ghost-light" href={withBase('/gobierno-y-transparencia/')}>
+          Gobierno y transparencia
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

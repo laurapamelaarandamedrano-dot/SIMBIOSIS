@@ -1,0 +1,141 @@
+---
+import { org } from '../data/content';
+import { withBase } from '../utils/base';
+---
+
+<section class="hero" data-hero3d aria-label="Presentación de SIMBIOSIS">
+  <canvas class="hero3d__canvas" aria-hidden="true"></canvas>
+
+  <svg
+    class="hero3d__fallback"
+    viewBox="0 0 800 500"
+    role="img"
+    aria-labelledby="hero-fallback-title"
+  >
+    <title id="hero-fallback-title">Red de nodos que forma la silueta de columnas clásicas, símbolo de las instituciones</title>
+    <defs>
+      <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+        <stop offset="45%" stop-color="#3d8fd6" stop-opacity="0.6" />
+        <stop offset="100%" stop-color="#3d8fd6" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+    <g stroke="#3d8fd6" stroke-opacity="0.35" stroke-width="1.4" fill="none">
+      <path d="M120,430 L120,150 M240,430 L240,110 M360,430 L360,150 M440,430 L440,150 M560,430 L560,110 M680,430 L680,150" />
+      <path d="M90,430 L710,430" />
+      <path d="M110,150 L690,150" />
+      <path d="M110,150 L400,60 L690,150" />
+      <path d="M120,150 L240,110 L360,150 M440,150 L560,110 L680,150" />
+    </g>
+    <g fill="#f5a524">
+      <circle cx="400" cy="60" r="6" fill="url(#nodeGlow)" />
+    </g>
+    <g fill="#14b8a6">
+      {['120,150', '240,110', '360,150', '440,150', '560,110', '680,150'].map((p) => (
+        <circle cx={p.split(',')[0]} cy={p.split(',')[1]} r="5" fill="url(#nodeGlow)" />
+      ))}
+    </g>
+    <g fill="#3d8fd6">
+      {[120, 240, 360, 440, 560, 680].map((x) => (
+        <>
+          <circle cx={x} cy="270" r="4.5" fill="url(#nodeGlow)" />
+          <circle cx={x} cy="430" r="5" fill="url(#nodeGlow)" />
+        </>
+      ))}
+      <circle cx="90" cy="430" r="4" fill="url(#nodeGlow)" />
+      <circle cx="710" cy="430" r="4" fill="url(#nodeGlow)" />
+    </g>
+  </svg>
+
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="container hero__content">
+    <p class="eyebrow">Organización de la sociedad civil</p>
+    <h1 class="hero__title">{org.nombreCorto}</h1>
+    <p class="hero__full-name">{org.nombreCompleto}</p>
+    <p class="hero__tagline">{org.eslogan}</p>
+    <div class="cluster">
+      <a class="button button--primary" href={withBase('/que-hacemos/')}>Qué hacemos</a>
+      <a class="button button--ghost" href={withBase('/participa/')}>Cómo participar</a>
+    </div>
+  </div>
+
+  <script src="../scripts/hero3d.ts"></script>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: min(48rem, 100svh);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--gradient-institucional);
+  }
+
+  .hero3d__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero3d__fallback {
+    display: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero3d__canvas {
+      display: none;
+    }
+
+    .hero3d__fallback {
+      display: block;
+    }
+  }
+
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 25, 45, 0.35) 0%, rgba(10, 25, 45, 0.65) 100%);
+    pointer-events: none;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    color: var(--color-white);
+    padding-block: var(--space-2xl);
+  }
+
+  .hero .eyebrow {
+    color: var(--color-amber);
+  }
+
+  .hero__title {
+    color: var(--color-white);
+    font-size: clamp(3rem, 9vw, 6rem);
+    margin-bottom: var(--space-2xs);
+    letter-spacing: 0.02em;
+  }
+
+  .hero__full-name {
+    font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+    max-width: 40rem;
+    color: rgba(255, 255, 255, 0.92);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero__tagline {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+    color: var(--color-white);
+    max-width: 38rem;
+    margin-bottom: var(--space-lg);
+  }
+</style>

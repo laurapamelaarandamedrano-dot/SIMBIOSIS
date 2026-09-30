@@ -1,0 +1,104 @@
+---
+import { org } from '../data/content';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const year = new Date().getFullYear();
+
+const links = [
+  { href: '/quienes-somos/', label: 'Quiénes somos' },
+  { href: '/que-hacemos/', label: 'Qué hacemos' },
+  { href: '/principios-y-valores/', label: 'Principios y valores' },
+  { href: '/participa/', label: 'Participa' },
+  { href: '/gobierno-y-transparencia/', label: 'Gobierno y transparencia' },
+  { href: '/estrategia/', label: 'Estrategia' },
+];
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <p class="site-footer__name">{org.nombreCorto}</p>
+      <p class="site-footer__full">{org.nombreCompleto}</p>
+      <p class="site-footer__tag">{org.eslogan}</p>
+    </div>
+
+    <nav class="site-footer__nav" aria-label="Enlaces del sitio">
+      <ul>
+        {links.map((item) => (
+          <li><a href={`${base}${item.href}`}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container site-footer__bottom">
+    <p>{org.estatus}</p>
+    <p>© {year} {org.nombreCorto}. No partidista, sin fines de lucro.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-blue-deep-dark);
+    color: rgba(255, 255, 255, 0.85);
+    padding-block: var(--space-xl) var(--space-lg);
+  }
+
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .site-footer__name {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-white);
+    margin: 0 0 var(--space-2xs);
+  }
+
+  .site-footer__full,
+  .site-footer__tag {
+    margin: 0 0 var(--space-2xs);
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.92rem;
+  }
+
+  .site-footer__nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  .site-footer__nav a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 0.92rem;
+  }
+
+  .site-footer__nav a:hover {
+    color: var(--color-amber);
+    text-decoration: underline;
+  }
+
+  .site-footer__bottom {
+    padding-top: var(--space-md);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .site-footer__bottom p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.6);
+  }
+</style>

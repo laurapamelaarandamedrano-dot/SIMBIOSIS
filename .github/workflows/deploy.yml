@@ -1,0 +1,47 @@
+name: Deploy a SIMBIOSIS a GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  # Se pueden fijar SITE_URL, SITE_BASE y SITE_PREVIEW como "Repository variables"
+  # (Settings > Secrets and variables > Actions > Variables) para no depender del
+  # nombre del repositorio. Si no se definen, se calculan automaticamente.
+  SITE_URL: ${{ vars.SITE_URL != '' && vars.SITE_URL || format('https://{0}.github.io', github.repository_owner) }}
+  SITE_BASE: ${{ vars.SITE_BASE != '' && vars.SITE_BASE || format('/{0}/', github.event.repository.name) }}
+  SITE_PREVIEW: ${{ vars.SITE_PREVIEW != '' && vars.SITE_PREVIEW || 'true' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v7
+
+      - name: Construir el sitio con Astro
+        uses: withastro/action@v6
+        with:
+          node-version: 22
+          package-manager: npm
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,7 @@
+/* Sin JavaScript no hay quien anada la clase "is-visible" a los elementos con
+   la clase "reveal", asi que se muestran de inmediato para no dejar el sitio
+   en blanco quien tenga JavaScript deshabilitado. */
+.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
