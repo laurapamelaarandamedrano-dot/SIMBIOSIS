@@ -1,0 +1,204 @@
+---
+const navItems = [
+  { href: '/', label: 'Inicio' },
+  { href: '/quienes-somos/', label: 'Quiénes somos' },
+  { href: '/que-hacemos/', label: 'Qué hacemos' },
+  { href: '/principios-y-valores/', label: 'Principios y valores' },
+  { href: '/participa/', label: 'Participa' },
+  { href: '/gobierno-y-transparencia/', label: 'Gobierno y transparencia' },
+  { href: '/estrategia/', label: 'Estrategia' },
+];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const currentPath = Astro.url.pathname.replace(base, '') || '/';
+---
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="brand" href={`${base}/`}>
+      <svg class="brand__mark" viewBox="0 0 48 48" role="img" aria-hidden="true" focusable="false">
+        <path d="M8 38 L8 18 L14 12 L14 38 Z" fill="var(--color-blue-deep)" />
+        <path d="M18 38 L18 10 L24 4 L24 38 Z" fill="var(--color-blue-civic)" />
+        <path d="M28 38 L28 12 L34 18 L34 38 Z" fill="var(--color-turquoise)" />
+        <path d="M38 38 L38 20 L40 22 L40 38 Z" fill="var(--color-amber)" />
+        <rect x="6" y="38" width="36" height="3" fill="var(--color-blue-deep)" />
+      </svg>
+      <span class="brand__text">
+        <span class="brand__name">SIMBIOSIS</span>
+        <span class="brand__tag">Instituto para el Desarrollo Humano</span>
+      </span>
+    </a>
+
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+      <span class="visually-hidden">Abrir menú de navegación</span>
+      <span class="nav__toggle-bar" aria-hidden="true"></span>
+    </button>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav__menu" id="nav-menu">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={`${base}${item.href}`}
+              aria-current={currentPath === item.href ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+  <script src="../scripts/nav.ts"></script>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(245, 248, 252, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .site-header__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-block: var(--space-sm);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    text-decoration: none;
+  }
+
+  .brand__mark {
+    width: 2.4rem;
+    height: 2.4rem;
+    flex-shrink: 0;
+  }
+
+  .brand__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .brand__name {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--color-blue-deep);
+    letter-spacing: 0.02em;
+  }
+
+  .brand__tag {
+    font-size: 0.7rem;
+    color: var(--color-ink-soft);
+  }
+
+  .nav__toggle {
+    display: none;
+    background: transparent;
+    border: 2px solid var(--color-blue-deep);
+    border-radius: var(--radius-sm);
+    width: 2.75rem;
+    height: 2.75rem;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .nav__toggle-bar,
+  .nav__toggle-bar::before,
+  .nav__toggle-bar::after {
+    position: absolute;
+    left: 50%;
+    width: 1.3rem;
+    height: 2px;
+    background: var(--color-blue-deep);
+    transform: translateX(-50%);
+  }
+
+  .nav__toggle-bar {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .nav__toggle-bar::before {
+    content: '';
+    top: -6px;
+  }
+
+  .nav__toggle-bar::after {
+    content: '';
+    top: 6px;
+  }
+
+  .nav__menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav__menu a {
+    text-decoration: none;
+    color: var(--color-ink);
+    font-weight: 500;
+    font-size: 0.92rem;
+    padding: var(--space-3xs) 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color var(--dur-fast) var(--ease-standard), color var(--dur-fast) var(--ease-standard);
+  }
+
+  .nav__menu a:hover {
+    color: var(--color-blue-civic);
+  }
+
+  .nav__menu a[aria-current='page'] {
+    color: var(--color-blue-deep);
+    border-bottom-color: var(--color-amber);
+    font-weight: 600;
+  }
+
+  @media (max-width: 74rem) {
+    .nav__toggle {
+      display: block;
+    }
+
+    .nav {
+      position: absolute;
+      inset-inline: 0;
+      top: 100%;
+      background: var(--surface-page);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav__menu {
+      flex-direction: column;
+      gap: 0;
+      padding: 0 clamp(1.25rem, 4vw, 2rem);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--dur-med) var(--ease-standard), padding var(--dur-med) var(--ease-standard);
+    }
+
+    .nav__menu.is-open {
+      max-height: 32rem;
+      padding-block: var(--space-sm);
+    }
+
+    .nav__menu a {
+      display: block;
+      padding: var(--space-sm) 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+  }
+</style>

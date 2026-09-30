@@ -1,0 +1,22 @@
+# Fuente confidencial, nunca debe publicarse
+_source/
+
+# Dependencias
+node_modules/
+
+# Build
+dist/
+.astro/
+
+# Entorno
+.env
+.env.*
+!.env.example
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*
+!.vscode/extensions.json

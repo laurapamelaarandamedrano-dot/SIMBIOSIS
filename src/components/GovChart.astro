@@ -1,0 +1,114 @@
+---
+import { organosGobierno } from '../data/content';
+---
+
+<figure class="gov-chart">
+  <figcaption class="visually-hidden">
+    Estructura de gobierno proyectada. La Asamblea General de Asociados es el órgano superior;
+    de ella dependen el Consejo Directivo, la Dirección Ejecutiva, el Consejo Consultivo de
+    Políticas Públicas y el Órgano de Vigilancia.
+  </figcaption>
+  <ol class="gov-chart__tree">
+    <li class="gov-chart__root">
+      <span class="gov-chart__node gov-chart__node--root">{organosGobierno.asamblea}</span>
+      <ol class="gov-chart__branch">
+        {organosGobierno.organos.map((organo) => (
+          <li>
+            <span class="gov-chart__node">{organo}</span>
+          </li>
+        ))}
+      </ol>
+    </li>
+  </ol>
+</figure>
+
+<style>
+  .gov-chart {
+    margin: 0;
+    overflow-x: auto;
+    padding-block: var(--space-md);
+  }
+
+  .gov-chart__tree,
+  .gov-chart__branch {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gov-chart__root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gov-chart__node {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 3.2rem;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+
+  .gov-chart__node--root {
+    background: var(--color-blue-deep);
+    color: var(--color-white);
+    min-width: 18rem;
+  }
+
+  .gov-chart__root::after {
+    content: '';
+    width: 2px;
+    height: var(--space-md);
+    background: var(--color-border);
+  }
+
+  .gov-chart__branch {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    padding-top: var(--space-md);
+    min-width: min(64rem, 100%);
+  }
+
+  .gov-chart__branch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+    height: 2px;
+    background: var(--color-border);
+  }
+
+  .gov-chart__branch li {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex: 1 1 12rem;
+  }
+
+  .gov-chart__branch li::before {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--space-md));
+    left: 50%;
+    width: 2px;
+    height: var(--space-md);
+    background: var(--color-border);
+  }
+
+  .gov-chart__branch .gov-chart__node {
+    width: 100%;
+    background: var(--surface-card);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-turquoise);
+    color: var(--color-blue-deep);
+  }
+</style>

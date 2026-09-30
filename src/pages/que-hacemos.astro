@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { objetivos, lineasTrabajo, formasColaboracion } from '../data/content';
+---
+
+<BaseLayout
+  title="Qué hacemos"
+  description="Objetivos, líneas de trabajo y formas de colaboración del Instituto SIMBIOSIS."
+>
+  <PageHeader
+    eyebrow="Qué hacemos"
+    titulo="De los diagnósticos a los resultados"
+    descripcion="Cinco objetivos, seis líneas de trabajo y cuatro formas de colaborar con instituciones públicas, gobiernos locales, organizaciones y liderazgos sociales."
+  />
+
+  <section class="section" aria-labelledby="objetivos-titulo">
+    <div class="container">
+      <p class="eyebrow">Objetivos</p>
+      <h2 id="objetivos-titulo">Lo que nos proponemos</h2>
+      <ol class="numbered-list reveal-stagger">
+        {objetivos.map((texto, index) => (
+          <li class="numbered-list__item reveal">
+            <span class="numbered-list__index" aria-hidden="true">{index + 1}</span>
+            <p>{texto}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--band" aria-labelledby="lineas-titulo">
+    <div class="container">
+      <p class="eyebrow">Líneas de trabajo</p>
+      <h2 id="lineas-titulo" class="reveal">Seis frentes de acción</h2>
+      <div class="grid grid--3 reveal-stagger">
+        {lineasTrabajo.map((linea) => (
+          <div class="linea-card reveal">
+            <h3>{linea.titulo}</h3>
+            <p>{linea.texto}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="colabora-titulo">
+    <div class="container">
+      <p class="eyebrow">Formas de colaboración</p>
+      <h2 id="colabora-titulo">Cómo trabajamos con nuestros aliados</h2>
+      <div class="grid grid--4 reveal-stagger">
+        {formasColaboracion.map((f, i) => (
+          <div class:list={['card', 'tilt', 'reveal', `card--${['rosa', 'turquesa', 'ambar', 'civica'][i % 4]}`]}>
+            <h3>{f.titulo}</h3>
+            <p>{f.texto}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .numbered-list {
+    list-style: none;
+    margin: var(--space-lg) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .numbered-list__item {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: var(--space-md);
+    align-items: start;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--surface-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .numbered-list__index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background: var(--color-amber);
+    color: var(--color-blue-deep-dark);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+
+  .numbered-list__item p {
+    margin: 0;
+    align-self: center;
+  }
+
+  .linea-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+  }
+
+  .linea-card h3 {
+    color: var(--color-white);
+  }
+
+  .linea-card p {
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0;
+  }
+</style>

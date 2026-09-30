@@ -1,0 +1,17 @@
+---
+interface Props {
+  titulo: string;
+  texto: string;
+  indice?: string;
+  color?: 'rosa' | 'turquesa' | 'ambar' | 'civica';
+  as?: 'h3' | 'h4';
+}
+
+const { titulo, texto, indice, color = 'civica', as: Tag = 'h3' } = Astro.props;
+---
+
+<div class:list={['card', 'tilt', 'reveal', `card--${color}`]}>
+  {indice && <p class="card__index" aria-hidden="true">{indice}</p>}
+  <Tag>{titulo}</Tag>
+  <p>{texto}</p>
+</div>

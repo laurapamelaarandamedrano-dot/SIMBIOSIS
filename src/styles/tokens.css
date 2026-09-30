@@ -1,0 +1,55 @@
+:root {
+  /* Paleta institucional */
+  --color-blue-deep: #0f3b6e;
+  --color-blue-civic: #1c64a8;
+  --color-sky: #3d8fd6;
+  --color-turquoise: #14b8a6;
+  --color-turquoise-ink: #0f6f64;
+  --color-amber: #f5a524;
+  --color-paper: #f5f8fc;
+  --color-ink: #14202e;
+
+  /* Tonos derivados */
+  --color-blue-deep-dark: #0a2a4f;
+  --color-ink-soft: #3a4a5c;
+  --color-border: #d7e2ef;
+  --color-white: #ffffff;
+
+  /* Superficies */
+  --surface-page: var(--color-paper);
+  --surface-card: var(--color-white);
+
+  /* Tipografia */
+  --font-heading: 'Lora', 'Georgia', serif;
+  --font-body: 'Poppins', 'Segoe UI', sans-serif;
+
+  /* Espaciado */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* Layout */
+  --content-width: 72rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+
+  /* Sombras */
+  --shadow-card: 0 12px 30px -14px rgba(15, 59, 110, 0.35);
+  --shadow-card-hover: 0 20px 40px -16px rgba(15, 59, 110, 0.45);
+
+  /* Movimiento */
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 180ms;
+  --dur-med: 420ms;
+  --dur-slow: 900ms;
+
+  /* Gradientes institucionales */
+  --gradient-institucional: linear-gradient(135deg, var(--color-blue-deep) 0%, var(--color-blue-civic) 55%, var(--color-turquoise) 100%);
+  --gradient-civico: linear-gradient(120deg, var(--color-blue-civic) 0%, var(--color-sky) 100%);
+}

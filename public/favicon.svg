@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="SIMBIOSIS">
+  <rect width="48" height="48" rx="8" fill="#0f3b6e" />
+  <path d="M10 38 L10 20 L15 15 L15 38 Z" fill="#1c64a8" />
+  <path d="M19 38 L19 12 L24 7 L24 38 Z" fill="#3d8fd6" />
+  <path d="M28 38 L28 15 L33 20 L33 38 Z" fill="#14b8a6" />
+  <path d="M37 38 L37 22 L38.5 23.5 L38.5 38 Z" fill="#f5a524" />
+  <rect x="8" y="38" width="32" height="2.6" fill="#f5f8fc" />
+</svg>

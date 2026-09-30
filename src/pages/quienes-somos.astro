@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { quienesSomosTeaser, nombreCompromisos, filosofia, mision, vision } from '../data/content';
+---
+
+<BaseLayout
+  title="Quiénes somos"
+  description="La identidad, filosofía, misión y visión del Instituto SIMBIOSIS para el Desarrollo Humano, las Instituciones y la Sociedad."
+>
+  <PageHeader
+    eyebrow="Quiénes somos"
+    titulo="Un punto de encuentro entre el Estado y la ciudadanía"
+    descripcion={quienesSomosTeaser.parrafo1}
+  />
+
+  <section class="section" aria-labelledby="identidad-titulo">
+    <div class="container">
+      <h2 id="identidad-titulo" class="reveal">Identidad</h2>
+      <p class="reveal">{quienesSomosTeaser.parrafo2}</p>
+      <blockquote class="pull-quote reveal">
+        <p>{quienesSomosTeaser.cita}</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="section section--tight" aria-labelledby="nombre-titulo">
+    <div class="container">
+      <p class="eyebrow">Un nombre, nueve compromisos</p>
+      <h2 id="nombre-titulo">Lo que significa SIMBIOSIS</h2>
+      <p class="lede">
+        En biología, una simbiosis es la relación en la que dos seres distintos viven juntos y se
+        fortalecen mutuamente. Así entendemos la relación entre el Estado y la sociedad. Cada
+        letra de nuestro nombre guarda un compromiso.
+      </p>
+      <dl class="dna-list reveal-stagger">
+        {nombreCompromisos.map((item) => (
+          <div class="dna-list__row reveal">
+            <dt class="dna-list__letter" aria-hidden="true">{item.letra}</dt>
+            <dd class="dna-list__word">{item.palabra}</dd>
+            <dd class="dna-list__text">{item.texto}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section--band" aria-labelledby="filosofia-titulo">
+    <div class="container">
+      <p class="eyebrow">Filosofía</p>
+      <h2 id="filosofia-titulo" class="reveal">La praxis como vocación</h2>
+      <p class="lede reveal">{filosofia.parrafo1}</p>
+      <blockquote class="pull-quote reveal">
+        <p>{filosofia.cita}</p>
+      </blockquote>
+      <p class="lede reveal">{filosofia.parrafo2}</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="mision-vision-titulo">
+    <div class="container">
+      <h2 id="mision-vision-titulo" class="visually-hidden">Misión y visión</h2>
+      <div class="grid grid--2">
+        <div class="mv-block mv-block--mision reveal">
+          <p class="eyebrow">Misión</p>
+          <p>{mision}</p>
+        </div>
+        <div class="mv-block mv-block--vision reveal">
+          <p class="eyebrow">Visión</p>
+          <p>{vision}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .dna-list {
+    display: grid;
+    gap: var(--space-sm);
+    margin: var(--space-lg) 0 0;
+  }
+
+  .dna-list__row {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    grid-template-rows: auto auto;
+    column-gap: var(--space-md);
+    row-gap: 0;
+    align-items: start;
+    padding: var(--space-sm);
+    background: var(--surface-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .dna-list__letter {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--gradient-civico);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin: 0;
+  }
+
+  .dna-list__word {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-blue-deep);
+    font-size: 1.05rem;
+  }
+
+  .dna-list__text {
+    grid-column: 2;
+    grid-row: 2;
+    margin: var(--space-3xs) 0 0;
+    color: var(--color-ink-soft);
+  }
+
+  .mv-block {
+    padding: var(--space-lg);
+    border-radius: var(--radius-md);
+    color: var(--color-white);
+  }
+
+  .mv-block p:last-child {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.05rem;
+  }
+
+  .mv-block--mision {
+    background: var(--color-blue-deep);
+  }
+
+  .mv-block--vision {
+    background: var(--gradient-civico);
+  }
+
+  .mv-block .eyebrow {
+    color: var(--color-amber);
+  }
+</style>
