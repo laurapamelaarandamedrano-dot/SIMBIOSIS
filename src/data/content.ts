@@ -14,24 +14,28 @@ export const pilares = [
     titulo: 'Analizamos',
     texto: 'Elaboramos diagnósticos y evaluaciones de problemas públicos y de la gestión de las instituciones.',
     color: 'rosa',
+    icon: 'search',
   },
   {
     letra: '02',
     titulo: 'Proponemos',
     texto: 'Diseñamos y acompañamos políticas públicas, programas y mejoras de gestión con enfoque de desarrollo humano.',
     color: 'turquesa',
+    icon: 'spark',
   },
   {
     letra: '03',
     titulo: 'Formamos',
     texto: 'Profesionalizamos a personas servidoras públicas y formamos liderazgos ciudadanos, comunitarios y juveniles.',
     color: 'ambar',
+    icon: 'graduation',
   },
   {
     letra: '04',
     titulo: 'Actuamos',
     texto: 'Acompañamos la implementación en territorio y convocamos a autoridades, sociedad civil, academia y sector privado a construir acuerdos.',
     color: 'civica',
+    icon: 'union',
   },
 ] as const;
 
@@ -109,30 +113,34 @@ export const formasColaboracion = [
   {
     titulo: 'Asistencia técnica',
     texto: 'Acompañamiento a instituciones y gobiernos en planeación, gestión y evaluación.',
+    icon: 'compass',
   },
   {
     titulo: 'Formación',
     texto: 'Cursos, diplomados y talleres para personas servidoras públicas y liderazgos sociales.',
+    icon: 'book',
   },
   {
     titulo: 'Diálogo',
     texto: 'Diseño y facilitación de mesas de trabajo, foros y procesos de construcción de acuerdos.',
+    icon: 'chat',
   },
   {
     titulo: 'Proyectos conjuntos',
     texto: 'Iniciativas con aliados públicos, privados y sociales, con metas y evaluación compartidas.',
+    icon: 'layers',
   },
-];
+] as const;
 
 export const valores = [
-  { titulo: 'Servicio público', texto: 'Lo común está por encima de cualquier interés particular.' },
-  { titulo: 'Integridad', texto: 'Actuamos con honestidad y usamos los recursos con transparencia.' },
-  { titulo: 'Pluralidad', texto: 'Dialogamos con todas las posturas para construir acuerdos.' },
-  { titulo: 'Responsabilidad', texto: 'Respondemos por los resultados de lo que proponemos.' },
-  { titulo: 'Colaboración', texto: 'Sumamos a instituciones, sociedad y sector privado.' },
-  { titulo: 'Empatía', texto: 'Toda decisión pública tiene rostro y territorio.' },
-  { titulo: 'Rigor', texto: 'Sustentamos cada propuesta en datos y análisis serio.' },
-];
+  { titulo: 'Servicio público', texto: 'Lo común está por encima de cualquier interés particular.', icon: 'flag' },
+  { titulo: 'Integridad', texto: 'Actuamos con honestidad y usamos los recursos con transparencia.', icon: 'shield' },
+  { titulo: 'Pluralidad', texto: 'Dialogamos con todas las posturas para construir acuerdos.', icon: 'scale' },
+  { titulo: 'Responsabilidad', texto: 'Respondemos por los resultados de lo que proponemos.', icon: 'check-circle' },
+  { titulo: 'Colaboración', texto: 'Sumamos a instituciones, sociedad y sector privado.', icon: 'union' },
+  { titulo: 'Empatía', texto: 'Toda decisión pública tiene rostro y territorio.', icon: 'heart' },
+  { titulo: 'Rigor', texto: 'Sustentamos cada propuesta en datos y análisis serio.', icon: 'target' },
+] as const;
 
 export const principiosActuacion = [
   {
@@ -162,17 +170,20 @@ export const politicasGenerales = [
     titulo: 'Alianzas',
     texto:
       'SIMBIOSIS podrá establecer alianzas, convenios y colaboraciones con otras instituciones nacionales o internacionales, públicas, privadas, académicas o de la sociedad civil, conforme a su objeto institucional y a los instrumentos jurídicos aplicables.',
+    icon: 'union',
   },
   {
     titulo: 'Incidencia no partidista',
     texto:
       'Su incidencia pública se ejerce mediante análisis, propuestas, formación, diálogo institucional, participación en debates públicos, fortalecimiento de capacidades y colaboración con actores públicos y privados. No realiza proselitismo ni participa en campañas electorales.',
+    icon: 'scale',
   },
   {
     titulo: 'Transparencia',
     texto: 'Los convenios, las fuentes de financiamiento y los resultados de cada proyecto son públicos.',
+    icon: 'document',
   },
-];
+] as const;
 
 export const membresia = {
   quien:
@@ -210,16 +221,19 @@ export const membresiaFormal = [
   {
     titulo: 'Asociados fundadores',
     texto: 'Con voz y voto en la Asamblea.',
+    icon: 'shield',
   },
   {
     titulo: 'Asociados',
     texto: 'Admitidos conforme a los estatutos.',
+    icon: 'union',
   },
   {
     titulo: 'Colaboradores',
     texto: 'Participan en proyectos sin adquirir la calidad jurídica de asociado.',
+    icon: 'heart',
   },
-];
+] as const;
 
 export const organosGobierno = {
   asamblea: 'Asamblea General de Asociados',
@@ -276,10 +290,10 @@ export const relacionesInstitucionales =
   'SIMBIOSIS se vincula con instituciones públicas de los tres órdenes de gobierno, órganos legislativos, universidades, organizaciones civiles, sector privado, fundaciones y organismos de cooperación. Toda relación se formaliza mediante instrumentos que preservan su independencia.';
 
 export const publicaciones = [
-  { titulo: 'Informes SIMBIOSIS', texto: 'Con los resultados de sus proyectos.' },
-  { titulo: 'Cuadernos de Política Pública', texto: 'Con análisis y propuestas.' },
-  { titulo: 'Guías de Gestión', texto: 'Con herramientas prácticas para instituciones y liderazgos.' },
-];
+  { titulo: 'Informes SIMBIOSIS', texto: 'Con los resultados de sus proyectos.', icon: 'document' },
+  { titulo: 'Cuadernos de Política Pública', texto: 'Con análisis y propuestas.', icon: 'book' },
+  { titulo: 'Guías de Gestión', texto: 'Con herramientas prácticas para instituciones y liderazgos.', icon: 'clipboard' },
+] as const;
 
 export const difusion =
   'Foros, conversatorios y campañas de comunicación pública para acercar sus propuestas a la ciudadanía, además de un sitio web propio con proyectos, publicaciones e informes de transparencia.';

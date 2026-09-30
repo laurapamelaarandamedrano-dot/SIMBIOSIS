@@ -1,17 +1,32 @@
 ---
+import Icon, { type IconName } from './Icon.astro';
+
 interface Props {
   titulo: string;
   texto: string;
   indice?: string;
+  icon?: IconName;
+  badge?: string;
+  id?: string;
   color?: 'rosa' | 'turquesa' | 'ambar' | 'civica';
-  as?: 'h3' | 'h4';
+  as?: 'h2' | 'h3' | 'h4';
 }
 
-const { titulo, texto, indice, color = 'civica', as: Tag = 'h3' } = Astro.props;
+const { titulo, texto, indice, icon, badge, id, color = 'civica', as: Tag = 'h3' } = Astro.props;
 ---
 
 <div class:list={['card', 'tilt', 'reveal', `card--${color}`]}>
-  {indice && <p class="card__index" aria-hidden="true">{indice}</p>}
-  <Tag>{titulo}</Tag>
+  <div class="card__top">
+    {icon && (
+      <span class="card__badge" aria-hidden="true">
+        <Icon name={icon} />
+      </span>
+    )}
+    {indice && <p class="card__index" aria-hidden="true">{indice}</p>}
+  </div>
+  <Tag id={id}>
+    {titulo}
+    {badge && <span class="tag-propuesta">{badge}</span>}
+  </Tag>
   <p>{texto}</p>
 </div>
