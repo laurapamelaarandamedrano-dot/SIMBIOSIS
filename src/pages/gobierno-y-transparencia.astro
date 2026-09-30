@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import GovChart from '../components/GovChart.astro';
+import Card from '../components/Card.astro';
 import {
   naturalezaJuridica,
   objetoInstitucional,
@@ -15,6 +16,17 @@ import {
   financiamientoTransparencia,
   rendicionCuentas,
 } from '../data/content';
+
+const cardColors = ['rosa', 'turquesa', 'ambar', 'civica'] as const;
+
+const reglasIndependencia = [
+  { titulo: 'Independencia institucional', texto: independenciaInstitucional, icon: 'compass' },
+  { titulo: 'Conflictos de interés', texto: conflictosInteres, icon: 'scale' },
+  { titulo: 'Ética e integridad', texto: eticaIntegridad, icon: 'check-circle' },
+  { titulo: 'Propiedad intelectual', texto: propiedadIntelectual, icon: 'document' },
+  { titulo: 'Protección de datos', texto: proteccionDatos, icon: 'lock' },
+  { titulo: 'Financiamiento y transparencia', texto: financiamientoTransparencia, icon: 'clipboard' },
+] as const;
 ---
 
 <BaseLayout
@@ -46,11 +58,8 @@ import {
       <p class="eyebrow">Membresía formal</p>
       <h2 id="membresia-formal-titulo">Tres formas de pertenecer</h2>
       <div class="grid grid--3 reveal-stagger">
-        {membresiaFormal.map((m) => (
-          <div class="linea-card-light reveal">
-            <h3>{m.titulo}</h3>
-            <p>{m.texto}</p>
-          </div>
+        {membresiaFormal.map((m, i) => (
+          <Card titulo={m.titulo} texto={m.texto} icon={m.icon} color={cardColors[i % cardColors.length]} />
         ))}
       </div>
     </div>
@@ -66,31 +75,12 @@ import {
 
   <section class="section" aria-labelledby="independencia-titulo">
     <div class="container">
-      <div class="grid grid--2">
-        <div class="participa-block reveal">
-          <h2 id="independencia-titulo">Independencia institucional</h2>
-          <p>{independenciaInstitucional}</p>
-        </div>
-        <div class="participa-block reveal">
-          <h2>Conflictos de interés</h2>
-          <p>{conflictosInteres}</p>
-        </div>
-        <div class="participa-block reveal">
-          <h2>Ética e integridad</h2>
-          <p>{eticaIntegridad}</p>
-        </div>
-        <div class="participa-block reveal">
-          <h2>Propiedad intelectual</h2>
-          <p>{propiedadIntelectual}</p>
-        </div>
-        <div class="participa-block reveal">
-          <h2>Protección de datos</h2>
-          <p>{proteccionDatos}</p>
-        </div>
-        <div class="participa-block reveal">
-          <h2>Financiamiento y transparencia</h2>
-          <p>{financiamientoTransparencia}</p>
-        </div>
+      <p class="eyebrow">Independencia y ética</p>
+      <h2 id="independencia-titulo">Reglas que protegen la independencia</h2>
+      <div class="grid grid--3 reveal-stagger">
+        {reglasIndependencia.map((r, i) => (
+          <Card titulo={r.titulo} texto={r.texto} icon={r.icon} color={cardColors[(i + 2) % cardColors.length]} />
+        ))}
       </div>
     </div>
   </section>
@@ -124,31 +114,4 @@ import {
     font-weight: 500;
   }
 
-  .linea-card-light {
-    background: var(--surface-card);
-    border: 1px solid var(--color-border);
-    border-top: 4px solid var(--color-blue-civic);
-    border-radius: var(--radius-md);
-    padding: var(--space-md);
-  }
-
-  .linea-card-light p:last-child {
-    margin: 0;
-  }
-
-  .participa-block {
-    background: var(--surface-card);
-    border: 1px solid var(--color-border);
-    border-top: 4px solid var(--color-turquoise);
-    border-radius: var(--radius-md);
-    padding: var(--space-md);
-  }
-
-  .participa-block h2 {
-    font-size: 1.2rem;
-  }
-
-  .participa-block p {
-    margin: 0;
-  }
 </style>
